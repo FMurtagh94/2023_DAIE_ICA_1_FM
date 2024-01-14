@@ -1,0 +1,33 @@
+---
+title: "2023_DAIE_ICA_1_FM: Part A"
+format: html
+editor: visual
+---
+
+## Quarto
+
+{{< include common.qmd >}}
+
+## Connect to Database
+```{r}
+conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
+```
+
+## Total Budget for Projects in each Country
+```{r}
+budPerProj <- dbGetQuery(conn, "SELECT CustomerCountry, SUM(Budget), COUNT(CustomerCountry) FROM Projects JOIN Customers ON Projects.CustomerID=Customers.CustomerID GROUP BY CustomerCountry ORDER BY SUM(Budget) DESC")
+knitr::kable(budPerProj)
+```
+
+## Average Development Time per Project by Assests Used
+```{r}
+avgTimePerProj <- dbGetQuery(conn, "SELECT * FROM Projects JOIN Assets ON Projects.ProjectID=Assets.ProjectID GROUP BY AssetName")
+knitr::kable(avgTimePerProj)
+```
+
+
+
+## Disonnect to Database
+```{r}
+dbDisconnect(conn)
+```
