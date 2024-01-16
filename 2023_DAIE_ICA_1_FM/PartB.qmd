@@ -1,0 +1,22 @@
+---
+title: "2023_DAIE_ICA_1_FM: Part B - Linear Regression"
+format: html
+editor: visual
+---
+
+## Part B: Linear Regression
+
+{{< include common.qmd >}}
+
+```{r echo = FALSE}
+#Connect to Database
+conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
+```
+
+## Predict Succession based on team size + budget
+```{r echo = FALSE}
+topThree <- dbGetQuery(conn, "SELECT * FROM Projects JOIN Assets ON Projects.ProjectID=Assets.ProjectID")
+knitr::kable(topThree)
+```
+
+

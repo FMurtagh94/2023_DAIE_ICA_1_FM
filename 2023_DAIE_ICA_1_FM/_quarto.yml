@@ -9,6 +9,8 @@ website:
         text: Index
       - href: PartA.qmd
         text: SQL
+      - href: PartB.qmd
+        text: Linear Regression
 
 format:
   html:

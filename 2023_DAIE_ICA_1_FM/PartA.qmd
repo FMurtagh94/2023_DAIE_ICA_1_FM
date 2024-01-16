@@ -1,33 +1,60 @@
 ---
-title: "2023_DAIE_ICA_1_FM: Part A"
+title: "2023_DAIE_ICA_1_FM: Part A - SQL"
 format: html
 editor: visual
 ---
 
-## Quarto
+## Part A: SQL
 
 {{< include common.qmd >}}
 
-## Connect to Database
-```{r}
+```{r echo = FALSE}
+#Connect to Database
 conn <- dbConnect(RSQLite::SQLite(), "ICA_2023.sqlite")
 ```
 
 ## Total Budget for Projects in each Country
-```{r}
+```{r echo = FALSE}
 budPerProj <- dbGetQuery(conn, "SELECT CustomerCountry, SUM(Budget), COUNT(CustomerCountry) FROM Projects JOIN Customers ON Projects.CustomerID=Customers.CustomerID GROUP BY CustomerCountry ORDER BY SUM(Budget) DESC")
 knitr::kable(budPerProj)
 ```
 
 ## Average Development Time per Project by Assests Used
-```{r}
-avgTimePerProj <- dbGetQuery(conn, "SELECT * FROM Projects JOIN Assets ON Projects.ProjectID=Assets.ProjectID GROUP BY AssetName")
+```{r echo = FALSE}
+#Tried using AVG(DATEDIFF(day, StartDate, EndDate)) to try get the number of days average, but was not working for me
+avgTimePerProj <- dbGetQuery(conn, "SELECT ProjectName, COUNT(AssetName) FROM Projects JOIN Assets ON Projects.ProjectID=Assets.ProjectID GROUP BY ProjectName ORDER BY COUNT(AssetName)")
 knitr::kable(avgTimePerProj)
 ```
 
+## Top 3 Developers Based on number of Successesful Projects
+```{r echo = FALSE}
+#Assuming 'Successful Projects' is those with a Status = 'Completed'
+topThree <- dbGetQuery(conn, "SELECT Developers.DeveloperID, Name, Status, COUNT(Name) FROM Projects JOIN ProjectDevelopers ON Projects.ProjectID=ProjectDevelopers.ProjectID JOIN Developers ON ProjectDevelopers.DeveloperID=Developers.DeveloperID WHERE Status='Completed' GROUP BY Name ORDER BY COUNT(Name) DESC")
+knitr::kable(topThree)
+```
 
+##  Developers that had a 'Manger' or 'Producer' title in Projects
+```{r echo = FALSE}
+# 'Like' and 'OR'
+findManagers <- dbGetQuery(conn, "SELECT Name, Specialization, ProjectName, Status FROM Projects JOIN ProjectDevelopers ON Projects.ProjectID=ProjectDevelopers.ProjectID JOIN Developers ON ProjectDevelopers.DeveloperID=Developers.DeveloperID WHERE Developers.Specialization LIKE '%manager%' OR Developers.Specialization LIKE '%producer%'")
+knitr::kable(findManagers)
+```
 
-## Disonnect to Database
-```{r}
+## Different Assets and how many Projects they were used in
+```{r echo = FALSE}
+# 'DISTINCT' and 'ORDER BY'
+typesOfAssets <- dbGetQuery(conn, "SELECT DISTINCT(Type), COUNT(ProjectName) FROM Projects JOIN Assets ON Projects.ProjectID=Assets.ProjectID GROUP BY Type ORDER BY COUNT(ProjectName) DESC")
+knitr::kable(typesOfAssets)
+```
+
+## Projects still not Completed
+```{r echo = FALSE}
+# Subquery with SELECT
+projStage <- dbGetQuery(conn, "SELECT * FROM (SELECT Projects.ProjectID, ProjectName, Milestone, ExpectedCompletionDate FROM Projects JOIN Timelines ON Projects.ProjectID=Timelines.ProjectID WHERE Milestone !='Beta Release')")
+knitr::kable(projStage)
+```
+
+```{r echo = FALSE}
+# Disonnect to Database
 dbDisconnect(conn)
 ```
