@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "PartB.html",
+    "href": "PartB.html",
+    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
+    "section": "",
+    "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
+  },
+  {
+    "objectID": "PartB.html#part-b-linear-regression",
+    "href": "PartB.html#part-b-linear-regression",
+    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
+    "section": "",
+    "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
+  },
+  {
+    "objectID": "PartB.html#comparing-of-just-the-completed-projects",
+    "href": "PartB.html#comparing-of-just-the-completed-projects",
+    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
+    "section": "Comparing of just the Completed Projects",
+    "text": "Comparing of just the Completed Projects\n\n\n\nCall:\nlm(formula = teamBudget$Budget ~ teamBudget$Team, data = teamBudget)\n\nResiduals:\n     1      2      3      4 \n-75000  25000 -25000  75000 \n\nCoefficients:\n                  Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)      1.750e+05  8.310e+05   0.211    0.853\nteamBudget$Team -8.731e-11  7.906e+04   0.000    1.000\n\nResidual standard error: 79060 on 2 degrees of freedom\nMultiple R-squared:  1.084e-30, Adjusted R-squared:   -0.5 \nF-statistic: 2.168e-30 on 1 and 2 DF,  p-value: 1\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "PartB.html#comparing-of-all-the-projects",
+    "href": "PartB.html#comparing-of-all-the-projects",
+    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
+    "section": "Comparing of all the projects",
+    "text": "Comparing of all the projects\n\n\n\n\n\nComparing Budget and Team Size of all the projects"
+  },
+  {
+    "objectID": "PartB.html#coeffiecients",
+    "href": "PartB.html#coeffiecients",
+    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
+    "section": "Coeffiecients",
+    "text": "Coeffiecients\n\n\n\nCall:\nlm(formula = Budget ~ TeamSize)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-80794 -41605    963  46199  75963 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   393361      36406  10.805 3.72e-05 ***\nTeamSize      -19324       4555  -4.242  0.00543 ** \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 66150 on 6 degrees of freedom\nMultiple R-squared:   0.75, Adjusted R-squared:  0.7083 \nF-statistic:    18 on 1 and 6 DF,  p-value: 0.005426\n\n\n\nInterpretation of Models\n\nLooking at the coeffiecients (.7083) of the model above, we can assune that generally speaking, looking at the first 4 that are completed, we see a gradual increase in both team size and budget. However, with most of the remaining 4 still in the planning stages with just team leads, we can assume in the games developement industry that they focus on what budget they are working with first, and then see how many team members they can get to work on the project and slowly increase team size as they increase budget.\n\n\n\nDiscussion\n\nThe model isn’t too reliable with the data present. Half of the projects only have 1 team member currently, as we can only really speculate what could happen with the 4 non-complete projects, based on what we see with the first 4 complete projects."
+  },
+  {
+    "objectID": "index.html#linear-regression",
+    "href": "index.html#linear-regression",
+    "title": "2023_DAIE_ICA_1_FM",
+    "section": "Linear Regression",
+    "text": "Linear Regression\n\nThis page includes Part B"
+  },
+  {
+    "objectID": "common.html",
+    "href": "common.html",
+    "title": "2023_DAIE_ICA_1_FM",
+    "section": "",
+    "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
+  },
+  {
     "objectID": "PartA.html",
     "href": "PartA.html",
     "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
@@ -12,13 +61,6 @@
     "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
     "section": "",
     "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
-  },
-  {
-    "objectID": "PartA.html#connect-to-database",
-    "href": "PartA.html#connect-to-database",
-    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
-    "section": "Connect to Database",
-    "text": "Connect to Database"
   },
   {
     "objectID": "PartA.html#total-budget-for-projects-in-each-country",
@@ -49,69 +91,6 @@
     "text": "Developers that had a ‘Manger’ or ‘Producer’ title in Projects\n\n\n\n\n\nName\nSpecialization\nProjectName\nStatus\n\n\n\n\nJordan Kim\nProject Manager\nGalaxy Quest\nCompleted\n\n\nMorgan Lee\nProject Manager\nMystic Realms\nCompleted\n\n\nMorgan Lee\nProject Manager\nUrban Adventure\nCompleted\n\n\nJordan Kim\nProject Manager\nOcean Odyssey\nIn Progress\n\n\nKaren Garcia\nProducer\nDesert Survival\nPlanned\n\n\nJordan Kim\nProject Manager\nFrozen Frontier\nPlanned\n\n\nKaren Garcia\nProducer\nCybernetic Dreams\nPlanned"
   },
   {
-    "objectID": "PartA.html#different-assets-and-how-many-projects-they-were-used-in",
-    "href": "PartA.html#different-assets-and-how-many-projects-they-were-used-in",
-    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
-    "section": "Different Assets and how many Projects they were used in",
-    "text": "Different Assets and how many Projects they were used in\n\n\n\n\n\nType\nCOUNT(ProjectName)\n\n\n\n\nGameplay Script\n6\n\n\nEnvironment Design\n6\n\n\nTexture\n5\n\n\nCharacter Model\n5\n\n\nAnimation\n5\n\n\nCinematic\n4\n\n\nUI Element\n3\n\n\nLevel Design\n3\n\n\n3D Model\n3\n\n\nSound\n2"
-  },
-  {
-    "objectID": "PartA.html#projects-still-in-project-planning-stage",
-    "href": "PartA.html#projects-still-in-project-planning-stage",
-    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
-    "section": "Projects still in Project Planning stage",
-    "text": "Projects still in Project Planning stage\n\n\n\n\n\nProjectID\nProjectName\nExpectedCompletionDate\n\n\n\n\n106\nDesert Survival\n2023-10-01\n\n\n107\nFrozen Frontier\n2024-03-01\n\n\n108\nCybernetic Dreams\n2024-10-01"
-  },
-  {
-    "objectID": "PartA.html#disonnect-to-database",
-    "href": "PartA.html#disonnect-to-database",
-    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
-    "section": "Disonnect to Database",
-    "text": "Disonnect to Database"
-  },
-  {
-    "objectID": "common.html",
-    "href": "common.html",
-    "title": "2023_DAIE_ICA_1_FM",
-    "section": "",
-    "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
-  },
-  {
-    "objectID": "PartA.html#projects-still-not-complete",
-    "href": "PartA.html#projects-still-not-complete",
-    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
-    "section": "Projects still not ‘Complete’",
-    "text": "Projects still not ‘Complete’\n\n\n\n\n\n\n\n\n\n\n\nProjectID\nProjectName\nExpectedCompletionDate\nMilestone\n\n\n\n\n106\nDesert Survival\n2023-10-01\nPre-production\n\n\n107\nFrozen Frontier\n2024-03-01\nProject Planning\n\n\n108\nCybernetic Dreams\n2024-10-01\nProject Planning"
-  },
-  {
-    "objectID": "PartA.html#projects-still-not-completed",
-    "href": "PartA.html#projects-still-not-completed",
-    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
-    "section": "Projects still not Completed",
-    "text": "Projects still not Completed\n\n\n\n\n\nProject ID\nProject\nProject Stage\nExpected End Date\n\n\n\n\n106\nDesert Survival\nPre-production\n2023-10-01\n\n\n107\nFrozen Frontier\nProject Planning\n2024-03-01\n\n\n108\nCybernetic Dreams\nProject Planning\n2024-10-01"
-  },
-  {
-    "objectID": "PartB.html",
-    "href": "PartB.html",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "",
-    "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
-  },
-  {
-    "objectID": "PartB.html#part-b-linear-regression",
-    "href": "PartB.html#part-b-linear-regression",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "",
-    "text": "Loading required package: tidyverse\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.4     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\nLoading required package: plotly\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\n\nLoading required package: ggthemes\n\nLoading required package: DT\n\nLoading required package: DBI\n\nLoading required package: RSQLite"
-  },
-  {
-    "objectID": "PartB.html#predict-succession-based-on-team-size-budget",
-    "href": "PartB.html#predict-succession-based-on-team-size-budget",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "Predict Succession based on Team size + Budget",
-    "text": "Predict Succession based on Team size + Budget\n\n\n\n\n\nProjectName\nBudget\nTeam\n\n\n\n\nGalaxy Quest\n100000\n10\n\n\nMystic Realms\n200000\n11\n\n\nShadow Legacy\n150000\n11\n\n\nUrban Adventure\n250000\n10\n\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\nComparing Budget and Team Size of all the projects\n\n\n\n\n\n\"Here test\" \n\n[1] \"Here test\""
-  },
-  {
     "objectID": "PartA.html#different-assets-and-how-many-projects-each-was-used-in",
     "href": "PartA.html#different-assets-and-how-many-projects-each-was-used-in",
     "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
@@ -119,31 +98,10 @@
     "text": "Different Assets and how many Projects each was used in\n\n\n\n\n\nTypes of Assets\nNo. of Projects Used In\n\n\n\n\nGameplay Script\n6\n\n\nEnvironment Design\n6\n\n\nTexture\n5\n\n\nCharacter Model\n5\n\n\nAnimation\n5\n\n\nCinematic\n4\n\n\nUI Element\n3\n\n\nLevel Design\n3\n\n\n3D Model\n3\n\n\nSound\n2"
   },
   {
-    "objectID": "PartB.html#comparing-of-just-the-completed-projects",
-    "href": "PartB.html#comparing-of-just-the-completed-projects",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "Comparing of just the Completed Projects",
-    "text": "Comparing of just the Completed Projects\n\n\n\nCall:\nlm(formula = teamBudget$Budget ~ teamBudget$Team, data = teamBudget)\n\nResiduals:\n     1      2      3      4 \n-75000  25000 -25000  75000 \n\nCoefficients:\n                  Estimate Std. Error t value Pr(&gt;|t|)\n(Intercept)      1.750e+05  8.310e+05   0.211    0.853\nteamBudget$Team -8.731e-11  7.906e+04   0.000    1.000\n\nResidual standard error: 79060 on 2 degrees of freedom\nMultiple R-squared:  1.084e-30, Adjusted R-squared:   -0.5 \nF-statistic: 2.168e-30 on 1 and 2 DF,  p-value: 1\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "PartB.html#comparing-of-all-the-projects",
-    "href": "PartB.html#comparing-of-all-the-projects",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "Comparing of all the projects",
-    "text": "Comparing of all the projects\n\n\n\n\n\nComparing Budget and Team Size of all the projects"
-  },
-  {
-    "objectID": "PartB.html#interpretation-of-models",
-    "href": "PartB.html#interpretation-of-models",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "Interpretation of Models",
-    "text": "Interpretation of Models\n\n\n\nCall:\nlm(formula = Budget ~ TeamSize)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-80794 -41605    963  46199  75963 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   393361      36406  10.805 3.72e-05 ***\nTeamSize      -19324       4555  -4.242  0.00543 ** \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 66150 on 6 degrees of freedom\nMultiple R-squared:   0.75, Adjusted R-squared:  0.7083 \nF-statistic:    18 on 1 and 6 DF,  p-value: 0.005426\n\n\n\nLooking at the coeffiecients (.7083) of the model above, we can assune that generally speaking, looking at the first 4 that are completed, we see a gradual increase in both team size and budget. However, with most of the remaining 4 still in the planning stages with just team leads, we can assume in the games developement industry that they focus on what budget they are working with first, and then see how many team members they can get to work on the project."
-  },
-  {
-    "objectID": "PartB.html#coeffiecients",
-    "href": "PartB.html#coeffiecients",
-    "title": "2023_DAIE_ICA_1_FM: Part B - Linear Regression",
-    "section": "Coeffiecients",
-    "text": "Coeffiecients\n\n\n\nCall:\nlm(formula = Budget ~ TeamSize)\n\nResiduals:\n   Min     1Q Median     3Q    Max \n-80794 -41605    963  46199  75963 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)   393361      36406  10.805 3.72e-05 ***\nTeamSize      -19324       4555  -4.242  0.00543 ** \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 66150 on 6 degrees of freedom\nMultiple R-squared:   0.75, Adjusted R-squared:  0.7083 \nF-statistic:    18 on 1 and 6 DF,  p-value: 0.005426\n\n\n\nInterpretation of Models\n\nLooking at the coeffiecients (.7083) of the model above, we can assune that generally speaking, looking at the first 4 that are completed, we see a gradual increase in both team size and budget. However, with most of the remaining 4 still in the planning stages with just team leads, we can assume in the games developement industry that they focus on what budget they are working with first, and then see how many team members they can get to work on the project and slowly increase team size as they increase budget.\n\n\n\nDiscussion\n\nThe model isn’t too reliable with the data present. Half of the projects only have 1 team member currently, as we can only really speculate what could happen with the 4 non-complete projects, based on what we see with the first 4 complete projects."
+    "objectID": "PartA.html#projects-still-not-completed",
+    "href": "PartA.html#projects-still-not-completed",
+    "title": "2023_DAIE_ICA_1_FM: Part A - SQL",
+    "section": "Projects still not Completed",
+    "text": "Projects still not Completed\n\n\n\n\n\nProject ID\nProject\nProject Stage\nExpected End Date\n\n\n\n\n106\nDesert Survival\nPre-production\n2023-10-01\n\n\n107\nFrozen Frontier\nProject Planning\n2024-03-01\n\n\n108\nCybernetic Dreams\nProject Planning\n2024-10-01"
   }
 ]

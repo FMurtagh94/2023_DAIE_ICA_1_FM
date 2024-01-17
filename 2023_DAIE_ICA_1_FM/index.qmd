@@ -1,3 +1,9 @@
 ---
 title: "2023_DAIE_ICA_1_FM"
 ---
+
+## SQL 
+### This page contains Part A
+
+## Linear Regression
+### This page includes Part B
