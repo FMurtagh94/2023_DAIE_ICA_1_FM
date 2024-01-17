@@ -114,9 +114,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#average-development-time-per-project-by-assests-used" id="toc-average-development-time-per-project-by-assests-used" class="nav-link" data-scroll-target="#average-development-time-per-project-by-assests-used">Average Development Time per Project by Assests Used</a></li>
   <li><a href="#top-3-developers-based-on-number-of-successesful-projects" id="toc-top-3-developers-based-on-number-of-successesful-projects" class="nav-link" data-scroll-target="#top-3-developers-based-on-number-of-successesful-projects">Top 3 Developers Based on number of Successesful Projects</a></li>
   <li><a href="#developers-that-had-a-manger-or-producer-title-in-projects" id="toc-developers-that-had-a-manger-or-producer-title-in-projects" class="nav-link" data-scroll-target="#developers-that-had-a-manger-or-producer-title-in-projects">Developers that had a ‘Manger’ or ‘Producer’ title in Projects</a></li>
-  <li><a href="#different-assets-and-how-many-projects-they-were-used-in" id="toc-different-assets-and-how-many-projects-they-were-used-in" class="nav-link" data-scroll-target="#different-assets-and-how-many-projects-they-were-used-in">Different Assets and how many Projects they were used in</a></li>
+  <li><a href="#different-assets-and-how-many-projects-each-was-used-in" id="toc-different-assets-and-how-many-projects-each-was-used-in" class="nav-link" data-scroll-target="#different-assets-and-how-many-projects-each-was-used-in">Different Assets and how many Projects each was used in</a></li>
   <li><a href="#projects-still-not-completed" id="toc-projects-still-not-completed" class="nav-link" data-scroll-target="#projects-still-not-completed">Projects still not Completed</a></li>
-  <li><a href="#disonnect-to-database" id="toc-disonnect-to-database" class="nav-link" data-scroll-target="#disonnect-to-database">Disonnect to Database</a></li>
   </ul>
 </nav>
     </div>
@@ -195,9 +194,9 @@ Loading required package: RSQLite</code></pre>
 <table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">CustomerCountry</th>
-<th style="text-align: right;">SUM(Budget)</th>
-<th style="text-align: right;">COUNT(CustomerCountry)</th>
+<th style="text-align: left;">Country</th>
+<th style="text-align: right;">Total Budget</th>
+<th style="text-align: right;">No.&nbsp;of Projects</th>
 </tr>
 </thead>
 <tbody>
@@ -243,8 +242,8 @@ Loading required package: RSQLite</code></pre>
 <table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">ProjectName</th>
-<th style="text-align: right;">COUNT(AssetName)</th>
+<th style="text-align: left;">Project</th>
+<th style="text-align: right;">No.&nbsp;of Assets</th>
 </tr>
 </thead>
 <tbody>
@@ -276,10 +275,10 @@ Loading required package: RSQLite</code></pre>
 <table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: right;">DeveloperID</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: right;">COUNT(Name)</th>
+<th style="text-align: right;">Dev ID</th>
+<th style="text-align: left;">Dev Name</th>
+<th style="text-align: left;">Project Status</th>
+<th style="text-align: right;">No.&nbsp;of Successful Projects</th>
 </tr>
 </thead>
 <tbody>
@@ -367,15 +366,15 @@ Loading required package: RSQLite</code></pre>
 </div>
 </div>
 </section>
-<section id="different-assets-and-how-many-projects-they-were-used-in" class="level2">
-<h2 class="anchored" data-anchor-id="different-assets-and-how-many-projects-they-were-used-in">Different Assets and how many Projects they were used in</h2>
+<section id="different-assets-and-how-many-projects-each-was-used-in" class="level2">
+<h2 class="anchored" data-anchor-id="different-assets-and-how-many-projects-each-was-used-in">Different Assets and how many Projects each was used in</h2>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Type</th>
-<th style="text-align: right;">COUNT(ProjectName)</th>
+<th style="text-align: left;">Types of Assets</th>
+<th style="text-align: right;">No.&nbsp;of Projects Used In</th>
 </tr>
 </thead>
 <tbody>
@@ -429,18 +428,12 @@ Loading required package: RSQLite</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 26%">
-<col style="width: 25%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: left;">ProjectName</th>
-<th style="text-align: left;">Milestone</th>
-<th style="text-align: left;">ExpectedCompletionDate</th>
+<th style="text-align: right;">Project ID</th>
+<th style="text-align: left;">Project</th>
+<th style="text-align: left;">Project Stage</th>
+<th style="text-align: left;">Expected End Date</th>
 </tr>
 </thead>
 <tbody>
@@ -466,9 +459,6 @@ Loading required package: RSQLite</code></pre>
 </table>
 </div>
 </div>
-</section>
-<section id="disonnect-to-database" class="level2">
-<h2 class="anchored" data-anchor-id="disonnect-to-database">Disonnect to Database</h2>
 
 
 </section>

@@ -110,7 +110,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#part-b-linear-regression" id="toc-part-b-linear-regression" class="nav-link active" data-scroll-target="#part-b-linear-regression">Part B: Linear Regression</a></li>
-  <li><a href="#predict-succession-based-on-team-size-budget" id="toc-predict-succession-based-on-team-size-budget" class="nav-link" data-scroll-target="#predict-succession-based-on-team-size-budget">Predict Succession based on team size + budget</a></li>
+  <li><a href="#predict-succession-based-on-team-size-budget" id="toc-predict-succession-based-on-team-size-budget" class="nav-link" data-scroll-target="#predict-succession-based-on-team-size-budget">Predict Succession based on Team size + Budget</a>
+  <ul class="collapse">
+  <li><a href="#comparing-of-just-the-completed-projects" id="toc-comparing-of-just-the-completed-projects" class="nav-link" data-scroll-target="#comparing-of-just-the-completed-projects">Comparing of just the Completed Projects</a></li>
+  <li><a href="#comparing-of-all-the-projects" id="toc-comparing-of-all-the-projects" class="nav-link" data-scroll-target="#comparing-of-all-the-projects">Comparing of all the projects</a></li>
+  <li><a href="#coeffiecients" id="toc-coeffiecients" class="nav-link" data-scroll-target="#coeffiecients">Coeffiecients</a>
+  <ul class="collapse">
+  <li><a href="#interpretation-of-models" id="toc-interpretation-of-models" class="nav-link" data-scroll-target="#interpretation-of-models">Interpretation of Models</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -182,636 +191,89 @@ Loading required package: RSQLite</code></pre>
 </div>
 </div>
 </section>
-<section id="predict-succession-based-on-team-size-budget" class="level2">
-<h2 class="anchored" data-anchor-id="predict-succession-based-on-team-size-budget">Predict Succession based on team size + budget</h2>
+<section id="predict-succession-based-on-team-size-budget" class="level1">
+<h1>Predict Succession based on Team size + Budget</h1>
+<section id="comparing-of-just-the-completed-projects" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-of-just-the-completed-projects">Comparing of just the Completed Projects</h2>
 <div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = teamBudget$Budget ~ teamBudget$Team, data = teamBudget)
+
+Residuals:
+     1      2      3      4 
+-75000  25000 -25000  75000 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)      1.750e+05  8.310e+05   0.211    0.853
+teamBudget$Team -8.731e-11  7.906e+04   0.000    1.000
+
+Residual standard error: 79060 on 2 degrees of freedom
+Multiple R-squared:  1.084e-30, Adjusted R-squared:   -0.5 
+F-statistic: 2.168e-30 on 1 and 2 DF,  p-value: 1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
-<table class="table table-sm table-striped small">
-<colgroup>
-<col style="width: 7%">
-<col style="width: 11%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 8%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 13%">
-<col style="width: 9%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: left;">ProjectName</th>
-<th style="text-align: left;">StartDate</th>
-<th style="text-align: left;">EndDate</th>
-<th style="text-align: right;">Budget</th>
-<th style="text-align: left;">Status</th>
-<th style="text-align: right;">CustomerID</th>
-<th style="text-align: right;">AssetID</th>
-<th style="text-align: right;">ProjectID</th>
-<th style="text-align: left;">AssetName</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">CreationDate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 1</td>
-<td style="text-align: left;">Level Design</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 2</td>
-<td style="text-align: left;">Cinematic</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 3</td>
-<td style="text-align: left;">3D Model</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 4</td>
-<td style="text-align: left;">Gameplay Script</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 5</td>
-<td style="text-align: left;">Environment Design</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 6</td>
-<td style="text-align: left;">Level Design</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 7</td>
-<td style="text-align: left;">Texture</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 8</td>
-<td style="text-align: left;">Cinematic</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 9</td>
-<td style="text-align: left;">Texture</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 10</td>
-<td style="text-align: left;">Environment Design</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 11</td>
-<td style="text-align: left;">Sound</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 12</td>
-<td style="text-align: left;">Environment Design</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 13</td>
-<td style="text-align: left;">Gameplay Script</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 14</td>
-<td style="text-align: left;">Texture</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 15</td>
-<td style="text-align: left;">Animation</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 16</td>
-<td style="text-align: left;">Cinematic</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 17</td>
-<td style="text-align: left;">Animation</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 18</td>
-<td style="text-align: left;">3D Model</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 19</td>
-<td style="text-align: left;">Texture</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 20</td>
-<td style="text-align: left;">Gameplay Script</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 21</td>
-<td style="text-align: left;">Character Model</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 22</td>
-<td style="text-align: left;">Level Design</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 23</td>
-<td style="text-align: left;">Environment Design</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 24</td>
-<td style="text-align: left;">Texture</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 25</td>
-<td style="text-align: left;">Character Model</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 26</td>
-<td style="text-align: left;">UI Element</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">27</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 27</td>
-<td style="text-align: left;">UI Element</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 28</td>
-<td style="text-align: left;">Gameplay Script</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 29</td>
-<td style="text-align: left;">Character Model</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 30</td>
-<td style="text-align: left;">Environment Design</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 31</td>
-<td style="text-align: left;">3D Model</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 32</td>
-<td style="text-align: left;">Cinematic</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 33</td>
-<td style="text-align: left;">Environment Design</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 34</td>
-<td style="text-align: left;">Animation</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 35</td>
-<td style="text-align: left;">Character Model</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">36</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 36</td>
-<td style="text-align: left;">Gameplay Script</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">37</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 37</td>
-<td style="text-align: left;">Gameplay Script</td>
-<td style="text-align: left;">2021-02-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">38</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 38</td>
-<td style="text-align: left;">Sound</td>
-<td style="text-align: left;">2021-03-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Urban Adventure</td>
-<td style="text-align: left;">2022-10-01</td>
-<td style="text-align: left;">2023-02-31</td>
-<td style="text-align: right;">250000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">104</td>
-<td style="text-align: left;">Asset 39</td>
-<td style="text-align: left;">Character Model</td>
-<td style="text-align: left;">2021-04-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Galaxy Quest</td>
-<td style="text-align: left;">2021-01-01</td>
-<td style="text-align: left;">2021-09-30</td>
-<td style="text-align: right;">100000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">40</td>
-<td style="text-align: right;">101</td>
-<td style="text-align: left;">Asset 40</td>
-<td style="text-align: left;">Animation</td>
-<td style="text-align: left;">2021-05-15</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Mystic Realms</td>
-<td style="text-align: left;">2021-10-01</td>
-<td style="text-align: left;">2021-12-31</td>
-<td style="text-align: right;">200000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">41</td>
-<td style="text-align: right;">102</td>
-<td style="text-align: left;">Asset 41</td>
-<td style="text-align: left;">UI Element</td>
-<td style="text-align: left;">2021-06-15</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Shadow Legacy</td>
-<td style="text-align: left;">2022-01-01</td>
-<td style="text-align: left;">2022-09-30</td>
-<td style="text-align: right;">150000</td>
-<td style="text-align: left;">Completed</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">103</td>
-<td style="text-align: left;">Asset 42</td>
-<td style="text-align: left;">Animation</td>
-<td style="text-align: left;">2021-01-15</td>
-</tr>
-</tbody>
-</table>
+<p><img src="PartB_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
+<section id="comparing-of-all-the-projects" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-of-all-the-projects">Comparing of all the projects</h2>
+<div class="cell" data-layout-align="center" data-fig-cap-location="top">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="PartB_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Comparing Budget and Team Size of all the projects</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="coeffiecients" class="level2">
+<h2 class="anchored" data-anchor-id="coeffiecients">Coeffiecients</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Budget ~ TeamSize)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-80794 -41605    963  46199  75963 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   393361      36406  10.805 3.72e-05 ***
+TeamSize      -19324       4555  -4.242  0.00543 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 66150 on 6 degrees of freedom
+Multiple R-squared:   0.75, Adjusted R-squared:  0.7083 
+F-statistic:    18 on 1 and 6 DF,  p-value: 0.005426</code></pre>
+</div>
+</div>
+<section id="interpretation-of-models" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-of-models">Interpretation of Models</h3>
+<section id="looking-at-the-coeffiecients-.7083-of-the-model-above-we-can-assune-that-generally-speaking-looking-at-the-first-4-that-are-completed-we-see-a-gradual-increase-in-both-team-size-and-budget.-however-with-most-of-the-remaining-4-still-in-the-planning-stages-with-just-team-leads-we-can-assume-in-the-games-developement-industry-that-they-focus-on-what-budget-they-are-working-with-first-and-then-see-how-many-team-members-they-can-get-to-work-on-the-project-and-slowly-increase-team-size-as-they-increase-budget." class="level4">
+<h4 class="anchored" data-anchor-id="looking-at-the-coeffiecients-.7083-of-the-model-above-we-can-assune-that-generally-speaking-looking-at-the-first-4-that-are-completed-we-see-a-gradual-increase-in-both-team-size-and-budget.-however-with-most-of-the-remaining-4-still-in-the-planning-stages-with-just-team-leads-we-can-assume-in-the-games-developement-industry-that-they-focus-on-what-budget-they-are-working-with-first-and-then-see-how-many-team-members-they-can-get-to-work-on-the-project-and-slowly-increase-team-size-as-they-increase-budget.">Looking at the coeffiecients (.7083) of the model above, we can assune that generally speaking, looking at the first 4 that are completed, we see a gradual increase in both team size and budget. However, with most of the remaining 4 still in the planning stages with just team leads, we can assume in the games developement industry that they focus on what budget they are working with first, and then see how many team members they can get to work on the project and slowly increase team size as they increase budget.</h4>
+</section>
+</section>
+<section id="discussion" class="level3">
+<h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
+<section id="the-model-isnt-too-reliable-with-the-data-present.-half-of-the-projects-only-have-1-team-member-currently-as-we-can-only-really-speculate-what-could-happen-with-the-4-non-complete-projects-based-on-what-we-see-with-the-first-4-complete-projects." class="level4">
+<h4 class="anchored" data-anchor-id="the-model-isnt-too-reliable-with-the-data-present.-half-of-the-projects-only-have-1-team-member-currently-as-we-can-only-really-speculate-what-could-happen-with-the-4-non-complete-projects-based-on-what-we-see-with-the-first-4-complete-projects.">The model isn’t too reliable with the data present. Half of the projects only have 1 team member currently, as we can only really speculate what could happen with the 4 non-complete projects, based on what we see with the first 4 complete projects.</h4>
 
 
+</section>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
